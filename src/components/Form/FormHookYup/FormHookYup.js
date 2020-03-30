@@ -1,7 +1,6 @@
 import React from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
-import { Container } from "reactstrap";
 
 const RegisterSchema = Yup.object().shape({
 	name: Yup.string().required("Name is required"),
@@ -14,7 +13,9 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export default function FormHookYup() {
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit, errors } = useForm({
+		validationSchema: RegisterSchema
+	});
 	const onSubmitForm = data => {
 		console.log(data);
 	};
